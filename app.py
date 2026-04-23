@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os
+
 
 st.set_page_config(page_title="Caja Complementaria FRAY MAMERTO ESQUIU", layout="wide")
 
@@ -198,7 +200,13 @@ Ademas, las Recaudación estimada desde Julio 2016 fue de $830.940.075. No se en
 st.title("📊 Proyección de Jubilaciones")
 
 # ---- Cargar datos ----
-df = pd.read_csv("FME.csv")
+
+ruta = os.path.join(os.path.dirname(__file__), "fme.xlsx")
+
+print(ruta)  # para debug
+
+df = pd.read_excel(ruta)
+df = pd.read_excel("FME.xlsx")
 
 # MOCK para probar si querés
 # df = pd.DataFrame({
