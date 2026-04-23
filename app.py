@@ -191,7 +191,7 @@ st.markdown("""
 ### 📌 Análisis
 
 Se observa que la recaudación actual resulta insuficiente para cubrir las erogaciones proyectadas, 
-requiriéndose un incremento en la alícuota de aporte del 5% al 10.6% para el punto de equilibrio.
-Ademas, las Recaudación etimada desde Julio 2016 fue de $830.940.075. No se encontraron datos desde 2013 a Junio 2016
+requiriéndose un incremento en la alícuota de aporte + contribucion del 5% al 10.6% para el punto de equilibrio.
+Ademas, las Recaudación estimada desde Julio 2016 fue de $830.940.075. No se encontraron datos desde 2013 a Junio 2016
 """)
 
