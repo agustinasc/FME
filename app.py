@@ -206,7 +206,7 @@ ruta = os.path.join(os.path.dirname(__file__), "fme.xlsx")
 print(ruta)  # para debug
 
 df = pd.read_excel(ruta)
-df = pd.read_excel("FME.xlsx")
+df = pd.read_excel("fme.xlsx")
 
 # MOCK para probar si querés
 # df = pd.DataFrame({
