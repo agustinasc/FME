@@ -2,11 +2,12 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import os
-
+import plotly.graph_objects as go
+import numpy as np
 
 st.set_page_config(page_title="Caja Complementaria FRAY MAMERTO ESQUIU", layout="wide")
 
-st.title("📊 Dashboard Caja Complementaria")
+st.title("📊 Dashboard Caja Complementaria FME - Datos hasta Marzo 2026")
 
 # =========================
 # DATA
@@ -89,18 +90,19 @@ st.dataframe(tabla_anual, use_container_width=True)
 
 st.subheader("⚖️ Punto de equilibrio")
 
-import plotly.graph_objects as go
-import numpy as np
+
+#CALCULO PARA EQUILIBROP
 
 activos = 742
 masa_salarial = 667698233.6
 recaudacion = masa_salarial * 0.05
-haber_promedio = 500000
+haber_promedio = 284733.75
 
 equilibrio = recaudacion / haber_promedio
 
 jubilados = np.arange(0, 300, 10)
 erogacion = jubilados * haber_promedio
+print(erogacion)
 
 # pasar a millones
 recaudacion_millones = recaudacion / 1_000_000
@@ -187,14 +189,14 @@ fig_pct.update_layout(
 
 st.plotly_chart(fig_pct, use_container_width=True)
 
-st.info("El sistema actualmente financia menos del 50% de las erogaciones. Haciendo una estimacion que los 142 jubilados de FME cobran en promedio $500.000")
+st.info("El sistema previsional de FME actualmente registra 142 agentes, pero solamente 135 ex-agentes perciben valores entre $ 800.000 y $ 1.200.000, promediando $ 284.733,75 y tuvieron en Marzo 2026 una erogacion total mensual de $ 23.309.818,19. La recaudación por los Activos (Aportes 2% y Contribiciones del 3%) fue de $ 33.384.912 financia el 70% de las Asig. Complementarias de los jubilados.")
 
 st.markdown("""
 ### 📌 Análisis
 
 Se observa que la recaudación actual resulta insuficiente para cubrir las erogaciones proyectadas, 
-requiriéndose un incremento en la alícuota de aporte + contribucion del 5% al 10.6% para el punto de equilibrio.
-Ademas, las Recaudación estimada desde Julio 2016 fue de $830.940.075. No se encontraron datos desde 2013 a Junio 2016
+requiriéndose un incremento en la alícuota de aporte + contribucion del 5% al 6.1% para el punto de equilibrio.
+Ademas, las Recaudación Total estimada del municipio desde Julio 2016 hasta Marzo 2026 fue de $830.940.075. No se encontraron datos desde 2013 a Junio 2016
 """)
 
 st.title("📊 Proyección de Jubilaciones")
