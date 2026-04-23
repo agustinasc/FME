@@ -195,3 +195,38 @@ requiriéndose un incremento en la alícuota de aporte + contribucion del 5% al 
 Ademas, las Recaudación estimada desde Julio 2016 fue de $830.940.075. No se encontraron datos desde 2013 a Junio 2016
 """)
 
+st.title("📊 Proyección de Jubilaciones")
+
+# ---- Cargar datos ----
+df = pd.read_csv("FME.csv")
+
+# MOCK para probar si querés
+# df = pd.DataFrame({
+#     "sexo": ["F","M","F","M"],
+#     "EDAD": [58, 63, 59, 64]
+# })
+
+# ---- Lógica ----
+df["edad_jubilatoria"] = df["sexo"].map({"F": 60, "M": 65})
+df["años_para_jubilarse"] = df["edad_jubilatoria"] - df["EDAD"]
+
+df_proj = df[
+    (df["años_para_jubilarse"] >= 0) &
+    (df["años_para_jubilarse"] <= 5)
+].copy()
+
+año_actual = 2026
+df_proj["año_jubilacion"] = año_actual + df_proj["años_para_jubilarse"]
+
+proyeccion = df_proj.groupby("año_jubilacion").size().reset_index(name="cantidad")
+
+# ---- Gráfico ----
+fig = px.line(
+    proyeccion,
+    x="año_jubilacion",
+    y="cantidad",
+    markers=True,
+    title="Proyección de Jubilaciones a 5 años"
+)
+
+st.plotly_chart(fig, use_container_width=True)
